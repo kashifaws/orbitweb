@@ -3,7 +3,6 @@ from flask import Flask, render_template
 from random import randint
 from time import sleep
 
-from decouple import config
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.service import Service
@@ -11,7 +10,6 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from fake_useragent import UserAgent
 from seleniumwire import webdriver
-from websocket import create_connection
 
 app = Flask(__name__)
 
@@ -26,11 +24,6 @@ def hello_world(username,passw,ip,port):
     print(userAgent)
     driver_options.add_argument(f'user-agent={userAgent}')
     driver_options.add_argument("start-maximized")
-    driver_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    driver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver_options.add_experimental_option('useAutomationExtension', False)
-    driver_options.add_argument('--disable-blink-features=AutomationControlled')
-    driver_options.headless = True
     driver_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     driver_options.add_argument("--headless")
     driver_options.add_argument("--disable-dev-shm-usage") 
