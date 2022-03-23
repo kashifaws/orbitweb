@@ -31,7 +31,7 @@ def hello_world(username,passw,ip,port):
     driver_options.add_argument(f'user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36')
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=driver_options)
     driver.get(website_url)
-    sleep(30)
+  #  sleep(30)
     people = []
     for request in driver.requests:
         first_request = driver.last_request;  
