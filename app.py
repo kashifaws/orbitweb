@@ -31,6 +31,10 @@ def hello_world(username,passw,ip,port):
     driver_options.add_experimental_option('useAutomationExtension', False)
     driver_options.add_argument('--disable-blink-features=AutomationControlled')
     driver_options.headless = True
+    driver_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    driver_options.add_argument("--headless")
+    driver_options.add_argument("--disable-dev-shm-usage") 
+    driver_options.add_argument("--no-sandbox")
 
     # Proxy Details
     # password=""
@@ -49,7 +53,7 @@ def hello_world(username,passw,ip,port):
 
     driver_options.add_argument(f'user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36')
   #  driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=driver_options, seleniumwire_options=optionss)
-    driver = webdriver.Chrome("chromedriver.exe",options=driver_options, seleniumwire_options=optionss)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=driver_options)
     driver.get(website_url)
     sleep(30)
     people = []
